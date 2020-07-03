@@ -25,25 +25,41 @@ module.exports = class ValidateHelp extends Validate {
         }
     }
 
-    validateAddress(_address) {
-        if(!_address) {
-            throw new Error('Endereço vazio');
+    equals(var1, var2) {
+        return var1 === var2
+    }
+    validateState(_state) {
+        if(!_state) {
+            throw new Error('Estado vazio');
         }
-        if(_address.length < 10) {
-            this.errors.push('Endereço deve ter mais de 10 caracteres');
+        if(_state.length != 2) {
+            this.errors.push('Sigla do estado invalida');
+        }
+
+        
+        let States = require('./states/states');
+        let objStates = new States().getStates();
+        for(let i = 0; i < objStates.length; i++) {
+            if(objStates[i].sigla === _state) {
+                var find = true;
+            }
+        }
+
+        if(!find) {
+            this.errors.push('Sigla do estado invalida');
         }
     }
+    
     validateData(_data) {
         this.errors = [];
         const dataName = _data.name;
         const dataPhoneNumb = _data.phoneNumber;
-        const dataAddress = _data.address;
-
+        const dataState = _data.state;
 
         try {
             this.validateName(dataName);
             this.validatePhoneNumber(dataPhoneNumb);
-            this.validateAddress(dataAddress);
+            this.validateState(dataState);
         } catch(err) {
             console.log("Error: ", err.message);
         }

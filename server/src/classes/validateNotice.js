@@ -55,7 +55,7 @@ module.exports = class ValidateNotice extends Validate {
     equals(var1, var2) {
         return var1 === var2
     }
-    validadeState(_state) {
+    validateState(_state) {
         if(!_state) {
             throw new Error('Estado vazio');
         }
@@ -88,7 +88,7 @@ module.exports = class ValidateNotice extends Validate {
             this.validateLink(dataLink);
             this.validateDate(dataDate);
             this.validateTitle(dataTitle);
-            this.validadeState(dataState);
+            this.validateState(dataState);
         } catch(err) {
             console.log("Error: ", err.message);
         }
