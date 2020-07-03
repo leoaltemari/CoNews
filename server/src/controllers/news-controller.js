@@ -41,3 +41,19 @@ exports.get = async (req, res,  next) => {
         res.status(400).json( {message: err });
     }
 };
+
+exports.delete = async(req, res, next) => {
+    const link = req.params.link;
+    const query = { link: link };
+    try {
+        const newsPostsDeleted = await PostNews.deleteMany(query);
+        
+        if(newsPostsDeleted.length === 0) {
+            res.status(204).json({ message: 'Nenhum item foi encontrado'});
+        } else {
+            res.status(200).json({ message: "Item deleted with success"});
+        }  
+    } catch(err) {
+        res.status(400).json({ message: err });
+    }
+};
