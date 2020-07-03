@@ -10,7 +10,7 @@ const server = http.createServer(app);
 
 server.listen(port, () => {
   console.log("Server runing into port: ", port);
-  console.log("link: http://localhost/" + port);
+  console.log("link: http://localhost:" + port);
 });
 server.on('error', onError);
 server.on('listening', onListening);
