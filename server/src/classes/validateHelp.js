@@ -36,13 +36,14 @@ module.exports = class ValidateHelp extends Validate {
     validateData(_data) {
         this.errors = [];
         const dataName = _data.name;
-        const dataPhoneNumb = _data.phoneNumb;
+        const dataPhoneNumb = _data.phoneNumber;
         const dataAddress = _data.address;
 
+
         try {
-            this.validateName(dataLink);
-            this.validatePhoneNumber(dataDate);
-            this.validateAddress(dataTitle);
+            this.validateName(dataName);
+            this.validatePhoneNumber(dataPhoneNumb);
+            this.validateAddress(dataAddress);
         } catch(err) {
             console.log("Error: ", err.message);
         }
