@@ -52,19 +52,43 @@ module.exports = class ValidateNotice extends Validate {
         }
     }
 
+    equals(var1, var2) {
+        return var1 === var2
+    }
+    validadeState(_state) {
+        if(!_state) {
+            throw new Error('Estado vazio');
+        }
+        if(_state.length != 2) {
+            this.errors.push('Sigla do estado invalida');
+        }
+
+        
+        let States = require('./states/states');
+        let objStates = new States().getStates();
+        for(let i = 0; i < objStates.length; i++) {
+            if(objStates[i].sigla === _state) {
+                var find = true;
+            }
+        }
+
+        if(!find) {
+            this.errors.push('Sigla do estado invalida');
+        }
+    }
+
     validateData(_data) {
         this.errors = [];
         const dataLink = _data.link;
         const dataDate = _data.date;
         const dataTitle = _data.title;
-        const dataEstate = _data.estate;
-        const dataCity = _data.city;
+        const dataState = _data.state;
 
         try {
             this.validateLink(dataLink);
             this.validateDate(dataDate);
             this.validateTitle(dataTitle);
-            // todo: checar estado e cidade no banco de dados de estado e cidade
+            this.validadeState(dataState);
         } catch(err) {
             console.log("Error: ", err.message);
         }
