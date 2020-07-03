@@ -61,9 +61,10 @@ module.exports = class ValidateNews extends Validate {
         }
         if(_state.length != 2) {
             this.errors.push('Sigla do estado invalida');
+            throw new Error("Estado possui mais que 2 caracteres");
+            return;
         }
 
-        
         let States = require('./states/states');
         let objStates = new States().getStates();
         for(let i = 0; i < objStates.length; i++) {
@@ -90,7 +91,7 @@ module.exports = class ValidateNews extends Validate {
             this.validateTitle(dataTitle);
             this.validateState(dataState);
         } catch(err) {
-            console.log("Error: ", err.message);
+            throw new Error("Invalid data format, error: ");
         }
     }
 }
