@@ -25,6 +25,19 @@ exports.post = async (req, res, next) => {
     }
 };
 
-exports.get = (req, res,  next) => {
-    
+exports.get = async (req, res,  next) => {
+    const state = req.params.state;
+    const query = { state: state};
+    try {
+        const newsPostsFinded = await PostNews.find(query);
+
+        // Se nao encontrar nenhum item no banco
+        if(newsPostsFinded.length === 0) {
+            res.status(200).json({ message: 'Nenhum item foi encontrado'});
+        } else {
+            res.status(200).json(newsPostsFinded);
+        }
+    } catch(err) {
+        res.status(400).json( {message: err });
+    }
 };
