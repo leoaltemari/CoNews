@@ -2,7 +2,7 @@
 
 let Validate = require('./validate');
 
-module.exports = class ValidateNotice extends Validate {
+module.exports = class ValidateNews extends Validate {
     constructor(_data) {
         super(_data);
     }

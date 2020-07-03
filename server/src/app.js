@@ -10,7 +10,7 @@ const router = express.Router();
 
 // Carrega as rotas
 const indexRoute = require('./routes/index-route');
-const noticeRoute = require('./routes/notice-route');
+const newsRoute = require('./routes/news-route');
 const helpRoute = require('./routes/help-route');
 
 // MidleWares
@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Routes
 app.use('/', indexRoute);
-app.use('/notice', noticeRoute);
+app.use('/news', newsRoute);
 app.use('/help', helpRoute);
 
 // Conect to the DB
