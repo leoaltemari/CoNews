@@ -1,16 +1,31 @@
 'uses struct'
 const Validator = require('../classes/validateNews');
 const validateNews = new Validator();
-const PostNews = require('../models/News')
+const PostNews = require('../models/News');
+const multer = require('multer');
+const path = require('path');
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'src/public/uploads');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname + Date.now() + path.extname(file.originalname));
+    }
+})
+const upload = multer({ storage });
+exports.uploadImage = upload.single('file');
+
+// Controllers routes
 exports.post = async (req, res, next) => {
     // Validacao de dados na requisicao
     try { 
-        validateNews.validateData(req.body);
-
+        // validateNews.validateData(req.body);
         // Criando objeto pelo modelo(PostNews)
+        let imageId = req.file.filename;
         const post = new PostNews({
             link: req.body.link,
+            image: { id: imageId, url: `server/src/public/uploads/${imageId}`} ,
             date: req.body.date,
             title: req.body.title,
             state: req.body.state

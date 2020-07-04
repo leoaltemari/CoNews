@@ -5,6 +5,10 @@ const PostNews = mongoose.Schema({
         type: String,
         required: true
     },
+    image: {
+        type: Object,
+        required: true
+    },
     date: {
         type: String,
         required: true
