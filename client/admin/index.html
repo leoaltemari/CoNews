@@ -1,18 +1,118 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoNews - Adm Page</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="css/index.css">
+</head>
 <body>
-    <form id="form" enctype="multipart/form-data" action="http://localhost:8081/news" method="post">
-        <input type="file" name="file" />
-        <br/>
-        <input type="submit" value="upload"></input>
-        <br/>
-        <img id="news-img">
-    </form>
+    <header class="main-header">
+        <h1>CoNews - Página de admnistrador</h1>
+        <div class="logo">
+            <a href="index.html">
+                <img src="../images/conews_logo.png" alt="Logo da pagina CoNews">
+            </a>
+        </div>
+        <div id="goto-user">
+            <a href="../user/index.html">
+                <button>
+                    Página de Usuário > 
+                </button>
+            </a>
+        </div>
+    </header>
+    
+    <main id="app">
+        <div id="news" class="category">
+            <h1 v-show="variable">Gerenciamento de  notícias</h1>
+            <div class="all-forms">
+                <div id="form-news" class="form">
+                    <h3>Adicionar notícia</h3>
+                    <form action="http://localhosst:8081/news" 
+                    enctype="multipart/form-data" 
+                    method="post" 
+                    target="content">
+                    <h5>Link</h5>
+                    <input type="text" placeholder="Digite o link da noticia">
 
-    <script>
+                    <h5>Imagem</h5>
+                    <input type="file" name="file"/>
+                    
+                    <h5>Data</h5>
+                    <input type="text" placeholder="dd/mm/aa">
+                    
+                    <h5>Título da notícia</h5>
+                    <input type="text" placeholder="Digite o título da noticia">
 
+                    <h5>Estado</h5>
+                    <select>
+                        <option selected>Selecione um estado</option>
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AM</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MT</option>
+                        <option>MS</option>
+                        <option>MG</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PR</option>
+                        <option>PE</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RS</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>SC</option>
+                        <option>SP</option>
+                        <option>SE</option>
+                        <option>TO</option>
+                    </select>
+                    <input type="submit" value="Adicionar"></input>
+                    </form>
+                </div>
+                <div id="get-remove">
+                    <div id="form-news" class="form">
+                        <h3>Remover notícia</h3>
+                        <form action="http://localhosst:8081/news" 
+                        enctype="multipart/form-data" 
+                        method="delete" 
+                        target="content">
+                        <h5>Link</h5>
+                        <input type="text" placeholder="Digite o link para remover a notícia">
 
+                        <input type="submit" value="Remover" style="background-color:red;color:white"></input>
+                        </form>
+                    </div>
+                    <div id="form-news" class="form">
+                        <h3>Visualizar notícia</h3>
+                        <form action="http://localhosst:8081/news" 
+                        enctype="multipart/form-data" 
+                        method="post" 
+                        target="content">
+                        <h5>Link</h5>
+                        <input type="text" placeholder="Digite o link para visualizar a notícia">
 
-        
-    </script>
+                        <input type="submit" value="Visualizar"
+                        style="background-color: rgb(255, 123, 0);"></input>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <iframe name="content"></iframe>
+    <script src="https://cdn.jsdelivr.net/npm/vue" defer></script>
+    <script src="src/index.js" defer></script>
 </body>
+</html>
