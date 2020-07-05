@@ -19,21 +19,31 @@ exports.uploadImage = upload.single('file');
 // Controllers routes
 exports.post = async (req, res, next) => {
     // Validacao de dados na requisicao
+    
     try { 
-        // validateNews.validateData(req.body);
-        // Criando objeto pelo modelo(PostNews)
-        let imageId = req.file.filename;
-        const post = new PostNews({
-            link: req.body.link,
-            image: { id: imageId, url: `server/src/public/uploads/${imageId}`} ,
-            date: req.body.date,
-            title: req.body.title,
-            state: req.body.state
-        });
+        validateNews.validateData(req.body);
 
-        // Salvando no banco
-        const saved = await post.save();
-        res.status(200).json(saved);
+        // Testa entrada de imagens
+        if(req.file == undefined) {
+            validateNews.errors.push('Imagem nao selecionada');
+        }
+
+        if(validateNews.getErrors().length === 0) {
+            // Criando objeto pelo modelo(PostNews)
+            let imageId = req.file.filename;
+            const post = new PostNews({
+                link: req.body.link,
+                image: { id: imageId, url: `server/src/public/uploads/${imageId}`} ,
+                date: req.body.date,
+                title: req.body.title,
+                state: req.body.state
+            });
+            
+            // Salvando no banco
+            const saved = await post.save();
+        }
+
+        res.status(200).json(validateNews.getErrors());
 
     } catch(err) {
         res.status(400).json({ message: err, errors: validateNews.getErrors() });
@@ -57,9 +67,10 @@ exports.get = async (req, res,  next) => {
     }
 };
 
-exports.delete = async(req, res, next) => {
-    const link = req.params.link;
-    const query = { link: link };
+exports.delete = async (req, res, next) => {
+    const title = req.params.title;
+    
+    const query = { title: title };
     try {
         const newsPostsDeleted = await PostNews.deleteMany(query);
         

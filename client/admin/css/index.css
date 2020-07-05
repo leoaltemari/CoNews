@@ -108,13 +108,14 @@ iframe {
     font-size: 15px;
 }
 
-.form input[type=text] {
+.form input[type=text], input[type=number] {
     width: 100%;
-    height: 25px;
+    height: 30px;
     border:none;
     border-radius: 20px;
     margin-bottom: 10px;
     padding-left: 15px;
+    box-sizing: border-box;
 }
 
 .form input[type=file] {
@@ -134,11 +135,11 @@ select {
 .form input, select {
     transition: 0.5s;
 }
-.form  input:focus, select:hover {
+.form  input:focus, select:hover, a:focus{
     border-bottom: 5px solid black;
     outline: none;
 }
-.form input[type=submit] {
+.form input[type=button] {
     border-radius: 10px;
     width: 150px;
     height: 30px;
@@ -149,8 +150,39 @@ select {
     left: 80px;
 }
 
-.form input[type=submit]:hover {
+
+.form input[type=button]:hover {
     border-bottom: 3px solid white;
     border-left: 3px solid white;
     cursor: pointer;
+}
+
+.viewLink {
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 150px;
+    height: 30px;
+    background-color: rgb(255, 145, 0);
+    border: none;
+    margin-top: 10px;
+    position: relative;
+    left: 80px;
+    transition: 0.5s;
+}
+
+.viewLink:hover {
+    border-bottom: 3px solid white;
+    border-left: 3px solid white;
+    cursor: pointer;
+}
+
+.viewLink a {
+    width: 100%;
+    height: 100%;
+}
+.viewLink a:focus {
+    text-decoration: none;
+    outline: none;
 }

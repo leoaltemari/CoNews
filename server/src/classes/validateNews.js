@@ -9,20 +9,23 @@ module.exports = class ValidateNews extends Validate {
 
     validateLink(_link) {
         if(!_link) {
-            throw new Error('Link em branco');
+            this.errors.push('Link em branco');
+            return;
         }
         if(_link.length < 7) {
             this.errors.push('Link deve ter mais de 7 caracteres');
         }
-        if(_link.indexOf('www.') === -1) {
+        if((_link.indexOf('www.') === -1 && _link.indexOf('http') === -1 ) && _link[3] != '.') {
             this.errors.push('Link deve conter \'www.\'');
         }
     };
 
     validateDate(_date) {
         if(!_date) {
-            throw new Error('Data em branco');
+            this.errors.push('Data em branco');
+            return;
         }
+
         const todaysDate = new Date();
         const day = parseInt(_date.substring(0, 2));
         const month =  parseInt(_date.substring(3, 5));
@@ -32,11 +35,11 @@ module.exports = class ValidateNews extends Validate {
             this.errors.push('Data inválida, entre com uma data atual');
         }
         if(day < 1 || day > 31 ||
-            month < 1 || month > 12) {
-            this.errors.push('Data inválida, formato deve seguir dd/mm/aa');
+            month < 1 || month > 12 || _date[2] != '/' || _date[5] != '/') {
+            this.errors.push('Data inválida, formato deve seguir dd/mm/aaaa');
         }
         if(year < 19) {
-            this.errors.push('Data inválida, entre com um ano maior que 2019');
+            this.errors.push('Data inválida, entre com um ano maior ou igual a 2019');
         } else if(year > todaysDate.getFullYear) {
             this.errors.push('Data inválida, entre com um ano atual');
         }
@@ -44,11 +47,12 @@ module.exports = class ValidateNews extends Validate {
 
     validateTitle(_title) {
         if(!_title) {
-            throw new Error('Titulo em branco');
+            this.errors.push('Titulo em branco');
+            return;
         }
 
-        if(_title.length < 10 || _title.length > 20) {
-            this.errors.push('Título inválido, entre com um título de no mínimo 5 caracteres e no máximo 20');
+        if(_title.length < 10) {
+            this.errors.push('Título inválido, entre com um título de no mínimo 10');
         }
     }
 
@@ -57,11 +61,11 @@ module.exports = class ValidateNews extends Validate {
     }
     validateState(_state) {
         if(!_state) {
-            throw new Error('Estado vazio');
+            this.errors.push('Estado em branco');
+            return;
         }
         if(_state.length != 2) {
             this.errors.push('Sigla do estado invalida');
-            throw new Error("Estado possui mais que 2 caracteres");
             return;
         }
 

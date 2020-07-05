@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoNews - Adm Page</title>
+    <link rel="shortcut icon" href="../images/conews_logo.png">
 
     <!-- CSS files -->
     <link rel="stylesheet" href="css/index.css">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+    <!-- pages header -->
     <header class="main-header">
         <h1>CoNews - Página de admnistrador</h1>
         <div class="logo">
@@ -27,28 +32,162 @@
     </header>
     
     <main id="app">
+        <!-- news manager -->
         <div id="news" class="category">
-            <h1 v-show="variable">Gerenciamento de  notícias</h1>
+            <h1>Gerenciador de Notícias</h1>
             <div class="all-forms">
+                <!-- ADD -->
                 <div id="form-news" class="form">
                     <h3>Adicionar notícia</h3>
-                    <form action="http://localhosst:8081/news" 
-                    enctype="multipart/form-data" 
-                    method="post" 
-                    target="content">
-                    <h5>Link</h5>
-                    <input type="text" placeholder="Digite o link da noticia">
+                    <form enctype="multipart/form-data">
+                        <h5>Link</h5>
+                        <input v-model="link" type="text" placeholder="Digite o link da noticia">
 
-                    <h5>Imagem</h5>
-                    <input type="file" name="file"/>
-                    
-                    <h5>Data</h5>
-                    <input type="text" placeholder="dd/mm/aa">
-                    
-                    <h5>Título da notícia</h5>
-                    <input type="text" placeholder="Digite o título da noticia">
+                        <h5>Imagem</h5>
+                        <input id="file-img" type="file" name="file"/>
+                        
+                        <h5>Data</h5>
+                        <input v-model="date" type="text" placeholder="dd/mm/aa">
+                        
+                        <h5>Título da notícia</h5>
+                        <input v-model="title" type="text" placeholder="Digite o título da noticia">
 
-                    <h5>Estado</h5>
+                        <h5>Estado</h5>
+                        <select v-model="state">
+                            <option selected>Selecione um estado</option>
+                            <option>AC</option>
+                            <option>AL</option>
+                            <option>AM</option>
+                            <option>BA</option>
+                            <option>CE</option>
+                            <option>DF</option>
+                            <option>ES</option>
+                            <option>GO</option>
+                            <option>MA</option>
+                            <option>MT</option>
+                            <option>MS</option>
+                            <option>MG</option>
+                            <option>PA</option>
+                            <option>PB</option>
+                            <option>PR</option>
+                            <option>PE</option>
+                            <option>RJ</option>
+                            <option>RN</option>
+                            <option>RS</option>
+                            <option>RO</option>
+                            <option>RR</option>
+                            <option>SC</option>
+                            <option>SP</option>
+                            <option>SE</option>
+                            <option>TO</option>
+                        </select>
+
+                        <div v-if="errors.length">
+                            <h5>Os seguintes erros foram encontrados: </h5>
+                            <ul style="list-style-type: none;">
+                                <li v-for="error in errors" style="color:red;">
+                                    <h6> {{ error   }} </h6>
+                                </li>
+                            </ul>
+                            </p>
+                        </div>
+                        <div v-if="success">
+                            <h6 style="color:rgb(0, 255, 0); 
+                            letter-spacing: 3px;
+                            font-weight: bold;
+                            font-size: 10px;"> 
+                                Notícia salva com sucesso! 
+                            </h6>
+                        </div>
+
+                        <input id="enviar" @click="sendForm" type="button" value="Adicionar"></input>
+                    </form>
+                    
+                </div>
+
+                <!-- SEARCH / REMOVE -->
+                <div id="get-remove">
+                    <!-- REMOVE -->
+                    <div id="form-news" class="form">
+                        <h3>Remover notícia</h3>
+                        <form>
+                            <h5>Título</h5>
+                            <input v-model="removeTitle" type="text" placeholder="Digite o título para remover a notícia">
+
+                            <input @click="removeNews" type="button" value="Remover" style="background-color:red;color:white"></input>
+                        </form>
+                    </div>
+                    <!-- SEARCH -->
+                    <div id="form-news" class="form">
+                        <h3>Visualizar notícias</h3>
+                        <form >
+                            <h5>Estado</h5>
+                            <input v-model="searchState" type="text" placeholder="Digite a sigla do estado">
+                            
+                            <div class="viewLink">
+                                <a @click="searchNews">
+                                Visualizar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- help manager -->
+        <div id="help" class="category">
+            <h1>Gerenciador de Ajuda</h1>
+            <div class="all-forms">
+                <div id="form-news" class="form">
+                    <h3>Adicionar ajuda</h3>
+                    <form>
+                        <h5>Nome do posto de saúde</h5>
+                        <input type="text" placeholder="Digite o nome">
+                        
+                        <h5>Telefone</h5>
+                        <input type="number" placeholder="(DDD) 3333-3333">
+
+                        <h5>Estado</h5>
+                        <select>
+                            <option selected>Selecione um estado</option>
+                            <option>AC</option>
+                            <option>AL</option>
+                            <option>AM</option>
+                            <option>BA</option>
+                            <option>CE</option>
+                            <option>DF</option>
+                            <option>ES</option>
+                            <option>GO</option>
+                            <option>MA</option>
+                            <option>MT</option>
+                            <option>MS</option>
+                            <option>MG</option>
+                            <option>PA</option>
+                            <option>PB</option>
+                            <option>PR</option>
+                            <option>PE</option>
+                            <option>RJ</option>
+                            <option>RN</option>
+                            <option>RS</option>
+                            <option>RO</option>
+                            <option>RR</option>
+                            <option>SC</option>
+                            <option>SP</option>
+                            <option>SE</option>
+                            <option>TO</option>
+                        </select>
+                        <input type="submit" value="Adicionar"></input>
+                    </form>
+                </div>
+                <div id="get-remove">
+                    <div id="form-news" class="form">
+                        <h3>Remover ajuda</h3>
+                        <form action="http://localhosst:8081/news" 
+                        enctype="multipart/form-data" 
+                        method="delete" 
+                        target="content">
+                        <h5>Estado</h5>
                     <select>
                         <option selected>Selecione um estado</option>
                         <option>AC</option>
@@ -77,30 +216,45 @@
                         <option>SE</option>
                         <option>TO</option>
                     </select>
-                    <input type="submit" value="Adicionar"></input>
-                    </form>
-                </div>
-                <div id="get-remove">
-                    <div id="form-news" class="form">
-                        <h3>Remover notícia</h3>
-                        <form action="http://localhosst:8081/news" 
-                        enctype="multipart/form-data" 
-                        method="delete" 
-                        target="content">
-                        <h5>Link</h5>
-                        <input type="text" placeholder="Digite o link para remover a notícia">
 
                         <input type="submit" value="Remover" style="background-color:red;color:white"></input>
                         </form>
                     </div>
                     <div id="form-news" class="form">
-                        <h3>Visualizar notícia</h3>
+                        <h3>Visualizar Ajuda</h3>
                         <form action="http://localhosst:8081/news" 
                         enctype="multipart/form-data" 
                         method="post" 
                         target="content">
-                        <h5>Link</h5>
-                        <input type="text" placeholder="Digite o link para visualizar a notícia">
+                        <h5>Estado</h5>
+                        <select>
+                            <option selected>Selecione um estado</option>
+                            <option>AC</option>
+                            <option>AL</option>
+                            <option>AM</option>
+                            <option>BA</option>
+                            <option>CE</option>
+                            <option>DF</option>
+                            <option>ES</option>
+                            <option>GO</option>
+                            <option>MA</option>
+                            <option>MT</option>
+                            <option>MS</option>
+                            <option>MG</option>
+                            <option>PA</option>
+                            <option>PB</option>
+                            <option>PR</option>
+                            <option>PE</option>
+                            <option>RJ</option>
+                            <option>RN</option>
+                            <option>RS</option>
+                            <option>RO</option>
+                            <option>RR</option>
+                            <option>SC</option>
+                            <option>SP</option>
+                            <option>SE</option>
+                            <option>TO</option>
+                        </select>
 
                         <input type="submit" value="Visualizar"
                         style="background-color: rgb(255, 123, 0);"></input>
@@ -109,9 +263,8 @@
                 </div>
             </div>
         </div>
-
     </main>
-    <iframe name="content"></iframe>
+
     <script src="https://cdn.jsdelivr.net/npm/vue" defer></script>
     <script src="src/index.js" defer></script>
 </body>
