@@ -6,6 +6,8 @@
     <title>CoNews - Notícias</title>
     <link rel="shortcut icon" href="../images/conews_logo.png">
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <!-- CSS files -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/slogan.css">
@@ -46,7 +48,8 @@
         </div>
         <div class="page-content">
             <div class="search-state">
-                <select class="ls-select">
+                <h3>Estado selecionado:</h3>
+                <select class="ls-select" v-model="selectedState" @click="searchNews">
                     <option selected>Selecione um estado</option>
                     <option>AC</option>
                     <option>AL</option>
@@ -77,83 +80,20 @@
             </div>
             <div class="display-news">
                 <!-- News -->
-                <div class="news-content">
+                <div class="news-content" v-for="news in findedNews" v-if="success">
+                    <a :href="news.link" target="blank">
                     <div class="news-img">
-                       <img src="../../server/src/public/uploads/teste.jpg1593986032176.jpg" alt="">
+                       <img :src="news.image.url" alt="">
                     </div>
                     <div class="news-info">
-                        <h6>10/10/2020</h6>
-                        <h5>Site: www.teste.com</h5>
-                        <h4>Título</h4>
+                        <h6>Data: {{ news.date }}</h6>
+                        <h4>{{ news.title }}</h4>
                     </div>
+                </a>
                 </div>
-
-                <div class="news-content">
-                    <div class="news-img">
-                       <img src="../../server/src/public/uploads/teste.jpg1593986032176.jpg" alt="">
-                    </div>
-                    <div class="news-info">
-                        <h6>10/10/2020</h6>
-                        <h5>Site: www.teste.com</h5>
-                        <h4>Título</h4>
-                    </div>
+                <div v-if="!success" class="no-news">
+                    <h1>Nenhuma notícia encontrada para {{selectedState}}</h1>
                 </div>
-
-                <div class="news-content">
-                    <div class="news-img">
-                       <img src="../../server/src/public/uploads/teste.jpg1593986032176.jpg" alt="">
-                    </div>
-                    <div class="news-info">
-                        <h6>10/10/2020</h6>
-                        <h5>Site: www.teste.com</h5>
-                        <h4>Título</h4>
-                    </div>
-                </div>
-
-                <div class="news-content">
-                    <div class="news-img">
-                       <img src="../../server/src/public/uploads/teste.jpg1593986032176.jpg" alt="">
-                    </div>
-                    <div class="news-info">
-                        <h6>10/10/2020</h6>
-                        <h5>Site: www.teste.com</h5>
-                        <h4>Título</h4>
-                    </div>
-                </div>
-
-                <div class="news-content">
-                    <div class="news-img">
-                       <img src="../../server/src/public/uploads/teste.jpg1593986032176.jpg" alt="">
-                    </div>
-                    <div class="news-info">
-                        <h6>10/10/2020</h6>
-                        <h5>Site: www.teste.com</h5>
-                        <h4>Título</h4>
-                    </div>
-                </div>
-
-                <div class="news-content">
-                    <div class="news-img">
-                       <img src="../../server/src/public/uploads/teste.jpg1593986032176.jpg" alt="">
-                    </div>
-                    <div class="news-info">
-                        <h6>10/10/2020</h6>
-                        <h5>Site: www.teste.com</h5>
-                        <h4>Título</h4>
-                    </div>
-                </div>
-
-                <div class="news-content">
-                    <div class="news-img">
-                       <img src="../../server/src/public/uploads/teste.jpg1593986032176.jpg" alt="">
-                    </div>
-                    <div class="news-info">
-                        <h6>10/10/2020</h6>
-                        <h5>Site: www.teste.com</h5>
-                        <h4>Título</h4>
-                    </div>
-                </div>
-
             </div>
         </div>
     </main>

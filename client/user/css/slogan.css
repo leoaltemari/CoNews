@@ -8,6 +8,8 @@
 .page-slogan {
     text-align: center;
     padding: 20px;
+    top: -50px;
+    position: relative;
     border-bottom: 2px solid black;
     border-radius: 100px;
     border-width: 5px;

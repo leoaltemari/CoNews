@@ -54,6 +54,8 @@ select:focus {
     padding: 20px;
     display: grid;
     grid-template-columns: auto auto auto auto;
+    position: relative;
+    top: -30px;
 }
 
 .news-content {
@@ -71,6 +73,10 @@ select:focus {
 .news-content:hover {
     cursor: pointer;
     transform: scale(1.05);
+}
+
+.news-content:hover h4 {
+    text-decoration: underline;
 }
 
 .news-img {
@@ -96,14 +102,22 @@ select:focus {
     color: rgb(66, 66, 66);
 }
 
-.news-info h5 {
+.news-info h4 {
     margin-top: 10px;
-    margin-bottom: 45px;
     letter-spacing: 0px;
+    max-height: 110px!important;
+    text-align: justify;
+    overflow: hidden;
+    color: rgb(0, 0, 0);
+    line-height: 30px;
+    transition: 1s;
 }
 
-.news-info h4 {
-    letter-spacing: 0px;
+.no-news {
+    text-align: center;
+    position:relative;
+    left: 350px;
+    color:rgb(179, 179, 179);
 }
 
 
