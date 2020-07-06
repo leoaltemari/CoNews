@@ -1,10 +1,10 @@
 # CoNews-POO
 
 ## Uso do git
-<h4>Antes de tudo, instale o git </h4><br>
+<h4>Antes de tudo, instale o git </h4>
   --> sudo apt-get update <br>
   --> sudo apt-get install git <br>
-  Para sertificar que foi instalado rode um git --version <br>
+  Para certificar que foi instalado rode um git --version <br>
 
 <h4>Com o git instalado configure seus dados com os dados do GitHub </h4><br>
 
