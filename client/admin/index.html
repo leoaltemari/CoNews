@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/index.css">
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <!-- pages header -->
@@ -32,8 +31,8 @@
     </header>
     
     <main id="app">
-        <!-- news manager -->
-        <div id="news" class="category">
+        <!-- NEWS manager -->
+        <div id="app-news" class="category">
             <h1>Gerenciador de Notícias</h1>
             <div class="all-forms">
                 <!-- ADD -->
@@ -82,16 +81,15 @@
                             <option>TO</option>
                         </select>
 
-                        <div v-if="errors.length">
+                        <div v-if="newsErrors.length">
                             <h5>Os seguintes erros foram encontrados: </h5>
                             <ul style="list-style-type: none;">
-                                <li v-for="error in errors" style="color:red;">
-                                    <h6> {{ error   }} </h6>
+                                <li v-for="error in newsErrors" style="color:red;">
+                                    <h6> {{ error }} </h6>
                                 </li>
                             </ul>
-                            </p>
                         </div>
-                        <div v-if="success">
+                        <div v-if="newsSuccess">
                             <h6 style="color:rgb(0, 255, 0); 
                             letter-spacing: 3px;
                             font-weight: bold;
@@ -99,8 +97,9 @@
                                 Notícia salva com sucesso! 
                             </h6>
                         </div>
+                        
 
-                        <input id="enviar" @click="sendForm" type="button" value="Adicionar"></input>
+                        <input id="enviar" @click="sendFormNews" type="button" value="Adicionar"></input>
                     </form>
                     
                 </div>
@@ -121,13 +120,48 @@
                     <div id="form-news" class="form">
                         <h3>Visualizar notícias</h3>
                         <form >
-                            <h5>Estado</h5>
-                            <input v-model="searchState" type="text" placeholder="Digite a sigla do estado">
+                            <select v-model="searchNewsState">
+                                <option selected>Selecione um estado</option>
+                                <option>AC</option>
+                                <option>AL</option>
+                                <option>AM</option>
+                                <option>BA</option>
+                                <option>CE</option>
+                                <option>DF</option>
+                                <option>ES</option>
+                                <option>GO</option>
+                                <option>MA</option>
+                                <option>MT</option>
+                                <option>MS</option>
+                                <option>MG</option>
+                                <option>PA</option>
+                                <option>PB</option>
+                                <option>PR</option>
+                                <option>PE</option>
+                                <option>RJ</option>
+                                <option>RN</option>
+                                <option>RS</option>
+                                <option>RO</option>
+                                <option>RR</option>
+                                <option>SC</option>
+                                <option>SP</option>
+                                <option>SE</option>
+                                <option>TO</option>
+                            </select>
                             
-                            <div class="viewLink">
-                                <a @click="searchNews">
-                                Visualizar
-                                </a>
+                            <div class="search-btns">
+                                <!-- GET -->
+                                <div class="viewLink">
+                                    <a @click="searchNews">
+                                    Por estado
+                                    </a>
+                                </div>
+                                <!-- GET ALL -->
+                                <div class="viewLink">
+                                    <a @click="searchAllNews">
+                                    Visualizar tudo
+                                    </a>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -135,21 +169,24 @@
             </div>
         </div>
 
-        <!-- help manager -->
-        <div id="help" class="category">
+        <!-- HELP manager -->
+        <div id="app-help" class="category">
             <h1>Gerenciador de Ajuda</h1>
+            <!-- ALL forms -->
             <div class="all-forms">
+                <!-- POST form -->
                 <div id="form-news" class="form">
                     <h3>Adicionar ajuda</h3>
+                    <!-- input -->
                     <form>
                         <h5>Nome do posto de saúde</h5>
-                        <input type="text" placeholder="Digite o nome">
+                        <input v-model="helpName" type="text" placeholder="Digite o nome do posto de saúde">
                         
                         <h5>Telefone</h5>
-                        <input type="number" placeholder="(DDD) 3333-3333">
+                        <input v-model="phoneNumber" type="text" placeholder="(DDD) 3333-3333">
 
                         <h5>Estado</h5>
-                        <select>
+                        <select v-model="stateHelp">
                             <option selected>Selecione um estado</option>
                             <option>AC</option>
                             <option>AL</option>
@@ -177,87 +214,78 @@
                             <option>SE</option>
                             <option>TO</option>
                         </select>
-                        <input type="submit" value="Adicionar"></input>
+
+                        <div v-if="helpErrors.length">
+                            <h5>Os seguintes erros foram encontrados: </h5>
+                            <ul style="list-style-type: none;">
+                                <li v-for="error in helpErrors" style="color:red;">
+                                    <h6> {{ error }} </h6>
+                                </li>
+                            </ul>
+                        </div>
+                        <div v-if="helpSuccess">
+                            <h6 style="color:rgb(0, 255, 0); 
+                            letter-spacing: 3px;
+                            font-weight: bold;
+                            font-size: 10px;"> 
+                                Posto de saúde salvo com sucesso! 
+                            </h6>
+                        </div>
+
+                        <input id="enviar" @click="sendFormHelp" type="button" value="Adicionar"></input>
                     </form>
                 </div>
+
+                <!-- DELETE and GET form -->
                 <div id="get-remove">
+                    <!-- DELETE -->
                     <div id="form-news" class="form">
                         <h3>Remover ajuda</h3>
-                        <form action="http://localhosst:8081/news" 
-                        enctype="multipart/form-data" 
-                        method="delete" 
-                        target="content">
-                        <h5>Estado</h5>
-                    <select>
-                        <option selected>Selecione um estado</option>
-                        <option>AC</option>
-                        <option>AL</option>
-                        <option>AM</option>
-                        <option>BA</option>
-                        <option>CE</option>
-                        <option>DF</option>
-                        <option>ES</option>
-                        <option>GO</option>
-                        <option>MA</option>
-                        <option>MT</option>
-                        <option>MS</option>
-                        <option>MG</option>
-                        <option>PA</option>
-                        <option>PB</option>
-                        <option>PR</option>
-                        <option>PE</option>
-                        <option>RJ</option>
-                        <option>RN</option>
-                        <option>RS</option>
-                        <option>RO</option>
-                        <option>RR</option>
-                        <option>SC</option>
-                        <option>SP</option>
-                        <option>SE</option>
-                        <option>TO</option>
-                    </select>
+                        <form>
+                            <h5>Estado</h5>
+                            <select v-model="removeHelpState">
+                                <option selected>Selecione um estado</option>
+                                <option>AC</option>
+                                <option>AL</option>
+                                <option>AM</option>
+                                <option>BA</option>
+                                <option>CE</option>
+                                <option>DF</option>
+                                <option>ES</option>
+                                <option>GO</option>
+                                <option>MA</option>
+                                <option>MT</option>
+                                <option>MS</option>
+                                <option>MG</option>
+                                <option>PA</option>
+                                <option>PB</option>
+                                <option>PR</option>
+                                <option>PE</option>
+                                <option>RJ</option>
+                                <option>RN</option>
+                                <option>RS</option>
+                                <option>RO</option>
+                                <option>RR</option>
+                                <option>SC</option>
+                                <option>SP</option>
+                                <option>SE</option>
+                                <option>TO</option>
+                            </select>
 
-                        <input type="submit" value="Remover" style="background-color:red;color:white"></input>
+                            <input @click="removeHelp" type="button" value="Remover" style="background-color:red;color:white"></input>
                         </form>
                     </div>
+
+                    <!-- GET -->
                     <div id="form-news" class="form">
                         <h3>Visualizar Ajuda</h3>
-                        <form action="http://localhosst:8081/news" 
-                        enctype="multipart/form-data" 
-                        method="post" 
-                        target="content">
-                        <h5>Estado</h5>
-                        <select>
-                            <option selected>Selecione um estado</option>
-                            <option>AC</option>
-                            <option>AL</option>
-                            <option>AM</option>
-                            <option>BA</option>
-                            <option>CE</option>
-                            <option>DF</option>
-                            <option>ES</option>
-                            <option>GO</option>
-                            <option>MA</option>
-                            <option>MT</option>
-                            <option>MS</option>
-                            <option>MG</option>
-                            <option>PA</option>
-                            <option>PB</option>
-                            <option>PR</option>
-                            <option>PE</option>
-                            <option>RJ</option>
-                            <option>RN</option>
-                            <option>RS</option>
-                            <option>RO</option>
-                            <option>RR</option>
-                            <option>SC</option>
-                            <option>SP</option>
-                            <option>SE</option>
-                            <option>TO</option>
-                        </select>
-
-                        <input type="submit" value="Visualizar"
-                        style="background-color: rgb(255, 123, 0);"></input>
+                        <form>
+                        <div class="search-btns">
+                            <!-- GET all -->
+                            <div class="viewLink" style="position: relative; left:70px;">
+                                <a @click="searchAllHelp">Visualizar tudo</a>
+                            </div>
+                        </div>
                         </form>
                     </div>
                 </div>
@@ -266,6 +294,7 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/vue" defer></script>
-    <script src="src/index.js" defer></script>
+    <script src="src/news-admin.js" defer></script>
+    <script src="src/help-admin.js" defer></script>
 </body>
 </html>
