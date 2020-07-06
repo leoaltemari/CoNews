@@ -67,6 +67,21 @@ exports.get = async (req, res,  next) => {
     }
 };
 
+exports.getAll = async (req, res,  next) => {
+    try {
+        const newsPostsFinded = await PostNews.find();
+
+        // Se nao encontrar nenhum item no banco
+        if(newsPostsFinded.length === 0) {
+            res.status(200).json({ message: 'Nenhum item foi encontrado'});
+        } else {
+            res.status(200).json(newsPostsFinded);
+        }
+    } catch(err) {
+        res.status(400).json( {message: err });
+    }
+};
+
 exports.delete = async (req, res, next) => {
     const title = req.params.title;
     

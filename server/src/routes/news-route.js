@@ -7,6 +7,7 @@ const controller = require('../controllers/news-controller');
 
 router.post('/', controller.uploadImage, controller.post);
 router.get('/:state', controller.get);
+router.get('/', controller.getAll);
 router.delete('/:title', controller.delete);
 
 module.exports = router;

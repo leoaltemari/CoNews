@@ -9,7 +9,8 @@ module.exports = class ValidateHelp extends Validate {
 
     validateName(_name) {
         if(!_name) {
-            throw new Error('Nome vazio');
+            this.errors.push('Nome vazio');
+            return;
         }
         if(_name.length < 5) {
             this.errors.push('Nome deve conter mais de 5 caracteres');
@@ -18,7 +19,8 @@ module.exports = class ValidateHelp extends Validate {
 
     validatePhoneNumber(_phoneNumb) {
         if(!_phoneNumb) {
-            throw new Error('Numero de telefone vazio');
+            this.errors.push('Numero de telefone vazio');
+            return;
         }
         if(_phoneNumb.length != 10) {
             this.errors.push('Telefone deve ter o formato (dd) 3333-3333');
@@ -30,7 +32,8 @@ module.exports = class ValidateHelp extends Validate {
     }
     validateState(_state) {
         if(!_state) {
-            throw new Error('Estado vazio');
+            this.errors.push('Estado vazio');
+            return;
         }
         if(_state.length != 2) {
             this.errors.push('Sigla do estado invalida');
