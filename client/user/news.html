@@ -42,7 +42,7 @@
         </div>
     </header>
 
-    <main id="app">
+    <main id="app" >
         <div class="page-slogan">
             <h1>Notícias</h1>
         </div>
@@ -91,13 +91,21 @@
                     </div>
                 </a>
                 </div>
-                <div v-if="!success" class="no-news">
+                
+                <div v-if="selectedState === 'Selecione um estado' ||
+                selectedState === ''" class="no-state">
+                    <h1>Nenhum estado selecionado</h1>
+                </div>
+                <div v-else-if="!success" class="no-news">
                     <h1>Nenhuma notícia encontrada para {{selectedState}}</h1>
                 </div>
             </div>
         </div>
     </main>
 
+    <div class="background"></div>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue" defer></script>
     <script src="src/news.js" defer></script>
 </body>

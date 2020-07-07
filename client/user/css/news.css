@@ -21,6 +21,24 @@
    }
 }
 
+*{
+    z-index: 0;
+}
+body {
+    background-image: url('../../images/bkg-img.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width:100%;
+    height:100%;
+}
+
 .search-state {
     text-align: center;
     padding: 20px;
@@ -33,7 +51,7 @@
     height: 38px;
     left: 258px;
     top: 215px;
-    opacity: 0.5;
+    background-color: white;
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 20px;
@@ -45,8 +63,9 @@ select:focus {
     outline: none;
     text-decoration: none;
 }
+
 .search-state select:hover {
-    background-color: #dbdbdb;
+    background-color: white;
     cursor: pointer;
 }
 
@@ -56,15 +75,18 @@ select:focus {
     grid-template-columns: auto auto auto auto;
     position: relative;
     top: -30px;
+    z-index: 0;
 }
 
 .news-content {
     background-color: #708FFA;
+    box-shadow: 0px 0px 3px black;
     margin: 15px 30px 15px 30px;
     border-radius: 20px;
     padding: 15px;
     box-sizing: border-box;
     width: 280px;
+    max-width: 280px;
     height: 350px;
     max-height: 350px;
     transition: 0.5s;
@@ -84,7 +106,7 @@ select:focus {
 }
 .news-img img {
     height: 180px;
-    width:200px;
+    width: 230px;
     border-radius: 10px;
     border: 2px solid white;
 }
@@ -106,7 +128,7 @@ select:focus {
     margin-top: 10px;
     letter-spacing: 0px;
     max-height: 110px!important;
-    text-align: justify;
+    text-align: left;
     overflow: hidden;
     color: rgb(0, 0, 0);
     line-height: 30px;
@@ -117,7 +139,12 @@ select:focus {
     text-align: center;
     position:relative;
     left: 350px;
-    color:rgb(179, 179, 179);
+    color:black;
+}
+
+.no-state {
+    position: relative;
+    left: 510px;
 }
 
 
