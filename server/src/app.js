@@ -15,23 +15,16 @@ const newsRoute = require('./routes/news-route');
 const helpRoute = require('./routes/help-route');
 
 // MiddleWares
+app.use(express.json());
+app.use(express.static('public'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors());
-app.use(express.static('public'));
 
 // Routes
 app.use('/', indexRoute);
 app.use('/news', newsRoute);
 app.use('/help', helpRoute);
-
-// const multer = require('multer');
-
-// const upload = multer({ dest: 'public/uploads'});
-// app.post('/news', upload.single('file'), (req, res, next) => {
-//   res.send("Enviado!");
-// });
 
 // Conect to the DB
 const uri = "mongodb+srv://conews123:conews123@conews.j5o03.mongodb.net/CoNews?retryWrites=true&w=majority";
