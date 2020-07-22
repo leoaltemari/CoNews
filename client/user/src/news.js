@@ -13,7 +13,6 @@ new Vue({
                 _list[i].image.url = "../../" + _list[i].image.url;
             }
             return;
-
         },
         searchNews: async function(event) {
             if(this.selectedState.length > 0 && this.selectedState != this.lastState) {

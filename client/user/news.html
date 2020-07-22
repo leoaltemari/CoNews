@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CoNews - Notícias</title>
     <link rel="shortcut icon" href="../images/conews_logo.png">
 
+    <!-- CDN scripts -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <!-- CSS files -->
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/slogan.css">
+    <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/news.css">
 </head>
 <body>
+    <!-- Main header -->
     <header>
         <div class="header-items">
             <!-- LOGO -->
@@ -28,20 +31,21 @@
                 <a href="news.html">Notícias</a>
             </div>
             <div class="header-btn">
-                <a href="">Sintomas</a>
+                <a href="symptoms.html">Sintomas</a>
             </div>
             <div class="header-btn">
-                <a href="">Formas de transmissão</a>
+                <a href="transmission.html">Formas de transmissão</a>
             </div>
             <div class="header-btn">
-                <a href="">Estou com covid-19?</a>
+                <a href="questionnaire.html">Estou com covid-19?</a>
             </div>
             <div class="header-btn">
-                <a href="">Ajuda</a>
+                <a href="help.html">Ajuda</a>
             </div> 
         </div>
     </header>
 
+    <!-- Page content -->
     <main id="app" >
         <div class="page-slogan">
             <h1>Notícias</h1>
@@ -103,7 +107,6 @@
         </div>
     </main>
 
-    <div class="background"></div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue" defer></script>

@@ -51,6 +51,7 @@ new Vue( {
             event.preventDefault();
         
             const rmvTitle = this.removeTitle;
+            console.log(this.removeTitle);
             
             let res = await axios({
                 method: 'delete',
