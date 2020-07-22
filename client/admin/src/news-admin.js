@@ -11,6 +11,10 @@ new Vue( {
         
         // Remove news
         removeTitle: "",
+        removeErrors: "",
+        removeErrorFlag: false,
+        removeSucess: "",
+        removeSuccessFlag: false,
 
         // Search news
         searchNewsState: "",
@@ -50,14 +54,33 @@ new Vue( {
         removeNews: async function(event) {
             event.preventDefault();
         
-            const rmvTitle = this.removeTitle;
-            console.log(this.removeTitle);
+            const rmvId = this.removeTitle;
+
+            if(rmvId.length === 0) {
+                this.removeErrors = 'Campo ID em branco';
+                this.removeErrorFlag = true;
+                this.removeSuccessFlag = false;
+                return;
+            }
             
-            let res = await axios({
-                method: 'delete',
-                url: `http://localhost:8081/news/${rmvTitle}`,
-                data: {},
-            })
+            const url = `http://localhost:8081/news/${rmvId}`
+
+            try {
+                await axios.delete(url)
+                    .then(response => {
+                        if(response.data.message === 'Nenhuma notícia foi encontrada') {
+                            this.removeErrors = response.data.message;
+                            this.removeErrorFlag = true;
+                            this.removeSuccessFlag = false;
+                        } else {
+                            this.removeSuccess = response.data.message;
+                            this.removeSuccessFlag = true;
+                            this.removeErrorFlag = false;
+                        }
+                    });
+            } catch(err) {
+                console.log(err);
+            }
         },
         searchNews: function(event) {
             event.currentTarget.href = `http://localhost:8081/news/${this.searchNewsState}`

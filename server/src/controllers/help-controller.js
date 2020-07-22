@@ -32,7 +32,7 @@ exports.get = async (req, res,  next) => {
 
         // Se nao encontrar nenhum item no banco
         if(helpPostsFinded.length === 0) {
-            res.status(204).json({ message: 'Nenhum item foi encontrado'});
+            res.status(200).json({ message: 'Nenhum item foi encontrado'});
         } else {
             res.status(200).json(helpPostsFinded);
         }
@@ -49,11 +49,10 @@ exports.delete = async (req, res, next) => {
 
         try {
             const helpPostsDeleted = await PostHelp.deleteOne(query)
-
-            if(helpPostsDeleted.length === 0) {
-                res.status(204).json({ message: 'Nenhum item foi encontrado'});
+            if(helpPostsDeleted.n === 0) {
+                res.status(200).json({ message: 'Nenhum item foi encontrado'});
             } else {
-                res.status(200).json({ message: "Item deleted with success"});
+                res.status(200).json({ message: "Ajuda removida com sucesso!"});
             }
         } catch(err) {
             res.status(400).json({ messaage: err });

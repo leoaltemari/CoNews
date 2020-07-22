@@ -4,6 +4,7 @@ const validateNews = new Validator();
 const PostNews = require('../models/News');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -41,6 +42,7 @@ exports.post = async (req, res, next) => {
             
             // Salvando no banco
             const saved = await post.save();
+            next();
         }
 
         res.status(200).json(validateNews.getErrors());
@@ -83,16 +85,20 @@ exports.getAll = async (req, res,  next) => {
 };
 
 exports.delete = async (req, res, next) => {
-    const title = req.params.title;
+    const id = req.params.id;
     
-    const query = { title: title };
+    const query = { _id: id };
     try {
-        const newsPostsDeleted = await PostNews.deleteMany(query);
+        const news = await PostNews.findOne({_id: id});
         
-        if(newsPostsDeleted.length === 0) {
-            res.status(204).json({ message: 'Nenhum item foi encontrado'});
+        const newsPostsDeleted = await PostNews.deleteOne(query);
+    
+        
+        console.log(typeof newsPostsDeleted.n);
+        if(newsPostsDeleted.n === 0) {
+            res.status(204).json({ message: 'Nenhuma notícia foi encontrada'});
         } else {
-            res.status(200).json({ message: "Item deleted with success"});
+            res.status(200).json({ message: 'Notícia removida com sucesso'});
         }  
     } catch(err) {
         res.status(400).json({ message: err });

@@ -55,7 +55,7 @@
 
                         <h5>Estado</h5>
                         <select v-model="state">
-                            <option selected>Selecione um estado</option>
+                            <option selected disabled hidden>Selecione um estado</option>
                             <option>AC</option>
                             <option>AL</option>
                             <option>AM</option>
@@ -99,8 +99,7 @@
                                 Notícia salva com sucesso! 
                             </h6>
                         </div>
-                        
-
+                    
                         <input id="enviar" @click="sendFormNews" type="button" value="Adicionar"></input>
                     </form>
                     
@@ -112,10 +111,32 @@
                     <div id="form-news" class="form">
                         <h3>Remover notícia</h3>
                         <form>
-                            <h5>Título</h5>
-                            <input v-model="removeTitle" type="text" placeholder="Digite o título para remover a notícia">
+                            <h5>ID da notícia</h5>
+                            <input v-model="removeTitle" type="text"
+                             placeholder="Digite a ID para remover a notícia">
 
-                            <input @click="removeNews" type="button" value="Remover" style="background-color:red;color:white"></input>
+
+                            <div v-if="removeErrorFlag === true">
+                                <h5>Os seguintes erros foram encontrados: </h5>
+                                <ul style="list-style-type: none;
+                                 color: rgb(253, 85, 85);
+                                 font-weight: 400;">
+                                    <li>
+                                        <h6> {{ removeErrors }} </h6>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div v-if="removeSuccessFlag === true">
+                                <ul style="list-style-type: none; color:rgb(102, 255, 102);">
+                                    <li>
+                                        <h6> {{ removeSuccess }} </h6>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <input @click="removeNews" type="button"
+                             value="Remover" style="background-color:red;color:white">
+                            </input>
                         </form>
                     </div>
                     <!-- SEARCH -->
@@ -273,6 +294,24 @@
                                 <option>SE</option>
                                 <option>TO</option>
                             </select>
+
+                            <div v-if="removeErrorFlag === true">
+                                <h5>Os seguintes erros foram encontrados: </h5>
+                                <ul style="list-style-type: none;
+                                 color: rgb(253, 85, 85);
+                                 font-weight: 400;">
+                                    <li>
+                                        <h6> {{ removeErrors }} </h6>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div v-if="removeSuccessFlag === true">
+                                <ul style="list-style-type: none; color:rgb(102, 255, 102);">
+                                    <li>
+                                        <h6> {{ removeSuccess }} </h6>
+                                    </li>
+                                </ul>
+                            </div>
 
                             <input @click="removeHelp" type="button" value="Remover" style="background-color:red;color:white"></input>
                         </form>

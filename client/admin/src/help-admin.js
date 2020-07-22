@@ -10,6 +10,10 @@ new Vue({
 
         // Remove help
         removeHelpState: "",
+        removeErrors: "",
+        removeErrorFlag: false,
+        removeSucess: "",
+        removeSuccessFlag: false,
     },
     methods: {
         // Help methods
@@ -42,13 +46,29 @@ new Vue({
             event.preventDefault();
         
             const rmvState = this.removeHelpState;
+
+            if(rmvState.length === 0) {
+                this.removeErrors = 'Nenhum estado foi selecionado';
+                this.removeErrorFlag = true;
+                this.removeSuccessFlag = false;
+                return;
+            }
             
             try {
-                let res = await axios({
-                    method: 'delete',
-                    url: `http://localhost:8081/help/${rmvState}`,
-                    data: {},
-                });
+                const url = `http://localhost:8081/help/${rmvState}`
+                await axios.delete(url)
+                    .then(response => {
+                        console.log(response.data);
+                        if(response.data.message === 'Nenhum item foi encontrado') {
+                            this.removeErrors = response.data.message;
+                            this.removeErrorFlag = true;
+                            this.removeSuccessFlag = false;
+                        } else {
+                            this.removeSuccess = response.data.message;
+                            this.removeSuccessFlag = true;
+                            this.removeErrorFlag = false;
+                        }
+                    })
             } catch(err) {
                 console.log('message:', err);
             }
