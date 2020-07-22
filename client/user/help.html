@@ -6,9 +6,14 @@
     <title>CoNews - Ajuda</title>
     <link rel="shortcut icon" href="../images/conews_logo.png">
 
+    <!-- CDN scripts -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <!-- CSS files -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/help.css">
+    <link rel="stylesheet" href="css/news.css">
 </head>
 <body>
     <!-- Main header -->
@@ -45,6 +50,61 @@
         <div class="page-slogan">
             <h1>Ajuda</h1>
         </div>
+
+
+        <div class="search-state">
+            <h3>Estado selecionado:</h3>
+            <select class="ls-select" v-model="selectedState" @click="searchHelp">
+                <option selected>Selecione um estado</option>
+                <option>AC</option>
+                <option>AL</option>
+                <option>AM</option>
+                <option>BA</option>
+                <option>CE</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option>GO</option>
+                <option>MA</option>
+                <option>MT</option>
+                <option>MS</option>
+                <option>MG</option>
+                <option>PA</option>
+                <option>PB</option>
+                <option>PR</option>
+                <option>PE</option>
+                <option>RJ</option>
+                <option>RN</option>
+                <option>RS</option>
+                <option>RO</option>
+                <option>RR</option>
+                <option>SC</option>
+                <option>SP</option>
+                <option>SE</option>
+                <option>TO</option>
+            </select>
+
+        </div>
+
+        <div class="display-help" v-if="findedHelp.name">
+            <div class="help-info">
+                <h1>Posto de saúde para o estado: {{selectedState}}</h1>
+                <h2>Nome:</h2>
+                <h3>{{findedHelp.name}}</h3>
+                <h2>Telefone para contato: </h2>
+                <h3>{{findedHelp.phoneNumber}}</h3>
+            </div>
+        </div>
+
+        <div class="display-help" v-else>
+            <div class="help-info" style="color:red;">
+                <h1>Selecione um estado para visualizar os dados</h1>
+            </div>
+        </div>
+
     </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue" defer></script>
+    <script src="src/help.js" defer></script>
 </body>
 </html>

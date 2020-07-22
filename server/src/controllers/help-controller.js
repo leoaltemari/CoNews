@@ -28,8 +28,26 @@ exports.post = async (req, res, next) => {
 // Get all 'help' in the collection
 exports.get = async (req, res,  next) => {
     try {
-        const helpPostsFinded = await PostHelp.find();
+        const query = {
+            state: req.params.state
+        }
+        const helpPostsFinded = await PostHelp.findOne(query);
+        
+        // Se nao encontrar nenhum item no banco
+        if(helpPostsFinded.length === 0) {
+            res.status(200).json({ message: 'Nenhum item foi encontrado'});
+        } else {
+            res.status(200).json(helpPostsFinded);
+        }
+    } catch(err) {
+        res.status(400).json( {message: err });
+    }
+};
 
+exports.getAll = async (req, res,  next) => {
+    try {
+        const helpPostsFinded = await PostHelp.find();
+        
         // Se nao encontrar nenhum item no banco
         if(helpPostsFinded.length === 0) {
             res.status(200).json({ message: 'Nenhum item foi encontrado'});
