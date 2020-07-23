@@ -60,6 +60,7 @@
                     <option selected>Selecione um estado</option>
                     <option>AC</option>
                     <option>AL</option>
+                    <option>AP</option>
                     <option>AM</option>
                     <option>BA</option>
                     <option>CE</option>
@@ -74,6 +75,7 @@
                     <option>PB</option>
                     <option>PR</option>
                     <option>PE</option>
+                    <option>PI</option>
                     <option>RJ</option>
                     <option>RN</option>
                     <option>RS</option>
@@ -99,13 +101,15 @@
                 </a>
                 </div>
                 
-                <div v-if="selectedState === 'Selecione um estado' ||
+                
+                
+            </div>
+            <div v-if="selectedState === 'Selecione um estado' ||
                 selectedState === ''" class="no-state">
                     <h1>Nenhum estado selecionado</h1>
                 </div>
-                <div v-else-if="!success" class="no-news">
-                    <h1>Nenhuma notícia encontrada para {{selectedState}}</h1>
-                </div>
+            <div v-else-if="!success" class="no-news">
+                <h1>Nenhuma notícia encontrada para {{selectedState}}</h1>
             </div>
         </div>
     </main>

@@ -20,7 +20,6 @@ exports.uploadImage = upload.single('file');
 // Controllers routes
 exports.post = async (req, res, next) => {
     // Validacao de dados na requisicao
-    
     try { 
         validateNews.validateData(req.body);
 
@@ -42,7 +41,7 @@ exports.post = async (req, res, next) => {
             
             // Salvando no banco
             const saved = await post.save();
-            next();
+            // next();
         }
 
         res.status(200).json(validateNews.getErrors());

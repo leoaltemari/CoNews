@@ -5,7 +5,7 @@ module.exports = class States {
         this.states = [
             { estado: "Acre", sigla: "AC" },
             { estado: "Alagoas", sigla: "AL" },
-            { estado: "Amapá", sigla: "AM" },
+            { estado: "Amapá", sigla: "AP" },
             { estado: "Amazonas", sigla: "AM" },
             { estado: "Bahia", sigla: "BA" },
             { estado: "Ceará", sigla: "CE" },
@@ -20,6 +20,7 @@ module.exports = class States {
             { estado: "Paraíba", sigla: "PB" },
             { estado: "Paraná", sigla: "PR" },
             { estado: "Pernambuco", sigla: "PE" },
+            { estado: "Piauí", sigla: "PI" },
             { estado: "Rio de Janeiro", sigla: "RJ" },
             { estado: "Rio Grande do Norte", sigla: "RN" },
             { estado: "Rio Grande do Sul", sigla: "RS" },

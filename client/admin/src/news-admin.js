@@ -26,6 +26,7 @@ new Vue( {
         sendFormNews: async function(event) {
             event.preventDefault();
             let image = $("#file-img")[0].files[0];
+
             let formdata = new FormData();
 
             formdata.append('link', this.link);
@@ -43,8 +44,10 @@ new Vue( {
         
                 this.newsErrors = [];
                 this.newsErrors = res.data;
+                this.newsSuccess = false;
 
                 if(this.newsErrors.length === 0) {
+                    console.log('here');
                     this.newsSuccess = true;
                 }
             } catch(err) {
