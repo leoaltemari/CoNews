@@ -9,6 +9,7 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/quiz.css">
 </head>
 <body>
     <!-- Main header -->
@@ -20,31 +21,195 @@
                     <img src="../images/conews_logo.png" alt="Logo da CoNews">
                 </a>
             </div>
-
+            
             <!-- Options -->
-            <div class="header-btn">
-                <a href="news.html">Notícias</a>
-            </div>
-            <div class="header-btn">
-                <a href="symptoms.html">Sintomas</a>
-            </div>
-            <div class="header-btn">
-                <a href="transmission.html">Formas de transmissão</a>
-            </div>
-            <div class="header-btn">
-                <a href="quiz.html">Estou com covid-19?</a>
-            </div>
-            <div class="header-btn">
-                <a href="help.html">Ajuda</a>
-            </div> 
+            <a href="news.html" class="header-btn">
+                Notícias
+            </a>
+            <a href="symptoms.html" class="header-btn">
+                Sintomas
+            </a>
+            <a href="transmission.html" class="header-btn">
+                Formas de transmissão
+            </a>
+            <a href="quiz.html" class="header-btn">
+                Estou com covid-19?
+            </a>
+            <a href="help.html" class="header-btn">
+                Ajuda
+            </a>
         </div>
     </header>
 
     <!-- Page content -->
-    <main id="app" >
+    <main id="app">
+        <!-- Slogan -->
         <div class="page-slogan">
             <h1>Estou com covid-19?</h1>
         </div>
+
+        <!-- Questionary -->
+        <div class="quiz" v-if="displayQuest">
+            <!-- title -->
+            <h1>Questionário</h1>
+            <p>
+                Lembrando que a avaliação é apenas para ter uma noção, nada do
+                que é mostrado aqui é um laudo médico, recomenda-se <b>sempre</b>
+                que, em caso de sintomas, procurar auxílio médico.
+            </p>
+            <h4>
+                Responda as perguntas levando em consideração o nível das respostas:<br>
+            </h4>
+            <div class="points">
+                <h4>0 -> Não apresento o sintoma</h4>
+                <h4>2 -> Sintomas em um nível mediano</h4>
+                <h4>4 -> Sintoma forte</h4>
+            </div>
+
+
+            <!-- Question 1 -->
+            <div class="quiz-item">
+                <!-- question -->
+                <div class="question">
+                    <h2>1-) Febre</h2>
+                </div>
+
+                <!-- answers -->
+                <div class="answer">
+                    <input type="radio" name="q1" value="0" v-model="answer[0]" checked>
+                    <label for="0">0</label>
+
+                    <input type="radio" name="q1" value="1" v-model="answer[0]">
+                    <label for="1">1</label>
+
+                    <input type="radio" name="q1" value="2" v-model="answer[0]">
+                    <label for="2">2</label>
+
+                    <input type="radio" name="q1" value="3" v-model="answer[0]">
+                    <label for="3">3</label>
+
+                    <input type="radio" name="q1" value="4" v-model="answer[0]">
+                    <label for="4">4</label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-item">
+                <!-- question -->
+                <div class="question">
+                    <h2>2-) Falta de ar/cansaço</h2>
+                </div>
+
+                <!-- answers -->
+                <div class="answer">
+                    <input type="radio" name="q2" value="0" v-model="answer[1]" checked>
+                    <label for="0">0</label>
+
+                    <input type="radio" name="q2" value="1" v-model="answer[1]">
+                    <label for="1">1</label>
+
+                    <input type="radio" name="q2" value="2" v-model="answer[1]">
+                    <label for="2">2</label>
+
+                    <input type="radio" name="q2" value="3" v-model="answer[1]">
+                    <label for="3">3</label>
+
+                    <input type="radio" name="q2" value="4" v-model="answer[1]">
+                    <label for="4">4</label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-item">
+                <!-- question -->
+                <div class="question">
+                    <h2>3-) Tosse seca</h2>
+                </div>
+
+                <!-- answers -->
+                <div class="answer">
+                    <input type="radio" name="q3" value="0" v-model="answer[2]" checked>
+                    <label for="0">0</label>
+
+                    <input type="radio" name="q3" value="1" v-model="answer[2]">
+                    <label for="1">1</label>
+
+                    <input type="radio" name="q3" value="2" v-model="answer[2]">
+                    <label for="2">2</label>
+
+                    <input type="radio" name="q3" value="3" v-model="answer[2]">
+                    <label for="3">3</label>
+
+                    <input type="radio" name="q3" value="4" v-model="answer[2]">
+                    <label for="4">4</label>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-item">
+                <!-- question -->
+                <div class="question">
+                    <h2>4-) Dores no corpo</h2>
+                </div>
+
+                <!-- answers -->
+                <div class="answer">
+                    <input type="radio" name="q4" value="0" v-model="answer[3]" checked>
+                    <label for="0">0</label>
+
+                    <input type="radio" name="q4" value="1" v-model="answer[3]">
+                    <label for="1">1</label>
+
+                    <input type="radio" name="q4" value="2" v-model="answer[3]">
+                    <label for="2">2</label>
+
+                    <input type="radio" name="q4" value="3" v-model="answer[3]">
+                    <label for="3">3</label>
+
+                    <input type="radio" name="q4" value="4" v-model="answer[3]">
+                    <label for="4">4</label>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-item">
+                <!-- question -->
+                <div class="question">
+                    <h2>5-) Perda de paladar e olfato</h2>
+                </div>
+
+                <!-- answers -->
+                <div class="answer">
+                    <input type="radio" name="q5" value="0" v-model="answer[4]" checked>
+                    <label for="0">0</label>
+
+                    <input type="radio" name="q5" value="1" v-model="answer[4]">
+                    <label for="1">1</label>
+
+                    <input type="radio" name="q5" value="2" v-model="answer[4]">
+                    <label for="2">2</label>4
+
+                    <input type="radio" name="q5" value="3" v-model="answer[4]">
+                    <label for="3">3</label>
+
+                    <input type="radio" name="q5" value="4" v-model="answer[4]">
+                    <label for="4">4</label>
+                </div>
+            </div>
+
+            <!-- Send form button -->
+            <div id="send-btn">
+                <input type="button" value="Analisar" @click="checkQuiz()">
+            </div>
+        </div>
+
+        <div class="quiz" v-else>
+            <h1>Chace de você estar com covid-19:</h1>
+            <h1 style="color: red;">{{ result }}%</h1>
+        </div>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue" defer></script>
+    <script src="src/quiz.js" defer></script>
 </body>
 </html>
