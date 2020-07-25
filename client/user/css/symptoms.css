@@ -1,0 +1,125 @@
+/* Media queries */
+
+@media(max-width: 1170px) {
+    .text {
+        min-height: 150px!important;
+    }
+}
+
+@media(max-width: 1165px) {
+    #display-info {
+        grid-template-columns: 1fr!important;
+    }
+
+    .information {
+        position: relative;
+        left: 10vw;
+    }
+
+}
+
+#display-subtitle {
+    text-align: center;
+    font-size: 115%
+}
+
+.subinformation {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subtitle {
+    background-color: #708FFA;
+    padding: 10px 50px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+#display-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 100px 100px;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+.information {
+    max-width: 500px;
+    text-align: center;
+    margin: 20px 100px;
+}
+
+.title {
+    background-color: #708FFA;
+    padding: 10px 50px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.text {
+    position: relative;
+    left: 30px;
+    padding: 20px;
+    width: 100%;
+    min-height: 100px;
+    max-height: 100px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    transition: 0.3s;
+    font-size: 150%
+}
+
+.text:hover {
+    background-color: rgb(236, 236, 236);
+    cursor: pointer;
+}
+
+#display-info2 {
+    margin: 100px 100px;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+.information2 {
+    max-width: 500px;
+    text-align: center;
+    margin-left: 550px;
+    margin-right: auto;
+}
+
+.title2 {
+    background-color: #708FFA;
+    padding: 10px 50px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.text2 {
+    position: relative;
+    left: 30px;
+    padding: 20px;
+    width: 100%;
+    min-height: 100px;
+    max-height: 100px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    transition: 0.3s;
+    font-size: 150%
+}
+
+.text2:hover {
+    background-color: rgb(236, 236, 236);
+    cursor: pointer;
+}

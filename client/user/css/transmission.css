@@ -1,0 +1,55 @@
+/* Media queries */
+
+@media(max-width: 1170px) {
+    .text {
+        min-height: 150px!important;
+    }
+}
+
+@media(max-width: 1165px) {
+    .information {
+        position: relative;
+        left: 10vw;
+    }
+
+}
+
+#display-subtitle {
+    text-align: center;
+    font-size: 115%
+}
+
+.subinformation {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subtitle {
+    background-color: #708FFA;
+    padding: 10px 50px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+#display-info {
+    text-align: center;
+    margin: 100px 100px;
+}
+
+.information {
+    max-width: 500px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 150%
+}
+
+.title {
+    background-color: #708FFA;
+    padding: 10px 50px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid black;
+}
