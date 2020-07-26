@@ -22,7 +22,7 @@ module.exports = class ValidateHelp extends Validate {
             this.errors.push('Numero de telefone vazio');
             return;
         }
-        if(_phoneNumb.length != 10) {
+        if(_phoneNumb.length != 14 && _phoneNumb !== 'Não possui') {
             this.errors.push('Telefone deve ter o formato (dd) 3333-3333');
         }
     }

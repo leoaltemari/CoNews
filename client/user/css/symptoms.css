@@ -1,22 +1,5 @@
 /* Media queries */
 
-@media(max-width: 1170px) {
-    .text {
-        min-height: 150px!important;
-    }
-}
-
-@media(max-width: 1165px) {
-    #display-info {
-        grid-template-columns: 1fr!important;
-    }
-
-    .information {
-        position: relative;
-        left: 10vw;
-    }
-
-}
 
 #display-subtitle {
     text-align: center;

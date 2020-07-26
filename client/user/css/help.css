@@ -1,3 +1,7 @@
+#app {
+    text-align: center;
+}
+
 .display-help {
     display: grid;
     height: 300px;
@@ -9,7 +13,7 @@
 .help-info {
     background-color: white;
     border-radius: 10px;
-    margin: 0px 350px;
+    margin: 40px 100px;
     border: 1px solid black;
     padding: 40px;
 }
@@ -29,4 +33,12 @@
     border-radius: 10px;
     min-width: 376px;
     font-weight: 400;
+}
+
+.help-info h3 a {
+    color: rgb(0, 89, 255);
+}
+
+.help-info h3 a:hover {
+    text-decoration: underline;
 }

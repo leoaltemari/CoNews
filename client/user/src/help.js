@@ -17,8 +17,7 @@ new Vue({
                         method: 'get',
                         url: `http://localhost:8081/help/${this.selectedState}`,
                     });
-            
-                    console.log(res.data);
+                    
                     this.findedHelp = res.data;
                 } catch(err) {
                     console.log('message: ', err);

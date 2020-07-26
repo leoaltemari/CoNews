@@ -204,17 +204,12 @@
                     <h3>Adicionar ajuda</h3>
                     <!-- input -->
                     <form>
-                        <h5>Nome do posto de saúde</h5>
-                        <input v-model="helpName" type="text" placeholder="Digite o nome do posto de saúde">
-                        
-                        <h5>Telefone</h5>
-                        <input v-model="phoneNumber" type="text" placeholder="(DDD) 3333-3333">
-
                         <h5>Estado</h5>
                         <select v-model="stateHelp">
-                            <option selected>Selecione um estado</option>
+                            <option selected disabled hidden>Selecione um estado</option>
                             <option>AC</option>
                             <option>AL</option>
+                            <option>AP</option>
                             <option>AM</option>
                             <option>BA</option>
                             <option>CE</option>
@@ -229,6 +224,7 @@
                             <option>PB</option>
                             <option>PR</option>
                             <option>PE</option>
+                            <option>PI</option>
                             <option>RJ</option>
                             <option>RN</option>
                             <option>RS</option>
@@ -239,6 +235,15 @@
                             <option>SE</option>
                             <option>TO</option>
                         </select>
+
+                        <h5>Link</h5>
+                        <input v-model="helpLink" type="text" placeholder="Digite o link">
+
+                        <h5>Telefone</h5>
+                        <input v-model="phoneNumber" type="text" placeholder="(DDD) 3333-3333">
+
+                        <h5>Nome do posto de saúde</h5>
+                        <input v-model="helpName" type="text" placeholder="Digite o nome do posto de saúde">           
 
                         <div v-if="helpErrors.length">
                             <h5>Os seguintes erros foram encontrados: </h5>

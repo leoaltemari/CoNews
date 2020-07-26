@@ -12,7 +12,8 @@ exports.post = async (req, res, next) => {
         const post = new PostHelp({
             name: req.body.name,
             phoneNumber: req.body.phoneNumber,
-            state: req.body.state
+            state: req.body.state,
+            link: req.body.link
         });
 
         // Salvando no Banco de Dados

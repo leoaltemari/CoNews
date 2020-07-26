@@ -5,6 +5,7 @@ new Vue({
         helpName: "",
         phoneNumber: "",
         stateHelp: "",
+        helpLink: '',
         helpErrors: [],
         helpSuccess: false,
 
@@ -18,11 +19,13 @@ new Vue({
     methods: {
         // Help methods
         sendFormHelp: async function(event) {
+            this.helpSuccess = false;
             event.preventDefault();
             let jsondata = {
                 name: this.helpName,
                 phoneNumber: this.phoneNumber,
                 state: this.stateHelp,
+                link: this.helpLink
             };
 
             try {
@@ -37,6 +40,8 @@ new Vue({
 
                 if(this.helpErrors.length === 0) {
                     this.helpSuccess = true;
+                } else {
+                    this.helpSuccess = false;
                 }
             } catch(err) {
                 console.log('message: ', err);

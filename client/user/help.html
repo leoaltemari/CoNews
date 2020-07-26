@@ -51,7 +51,7 @@
             <h1>Ajuda</h1>
         </div>
 
-
+        <!-- Search for state -->
         <div class="search-state">
             <h3>Estado selecionado:</h3>
             <select class="ls-select" v-model="selectedState" @click="searchHelp">
@@ -82,14 +82,17 @@
                 <option>SE</option>
                 <option>TO</option>
             </select>
-
         </div>
 
+        <!-- Display state information -->
         <div class="display-help" v-if="findedHelp.name">
             <div class="help-info">
                 <h1>Posto de saúde para o estado: {{selectedState}}</h1>
                 <h2>Nome:</h2>
                 <h3>{{findedHelp.name}}</h3>
+                <h2>Link para o site:</h2>
+                <h3><a :href="findedHelp.link"
+                    target="blank">{{findedHelp.link}}</a></h3>
                 <h2>Telefone para contato: </h2>
                 <h3>{{findedHelp.phoneNumber}}</h3>
             </div>
