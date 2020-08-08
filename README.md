@@ -54,10 +54,11 @@
 <p>To compile and execute the code you msut have Node.js  with npm installed in your computer</p>
 	<li><b>1º)</b> Link to install Node.js : https://nodejs.org/en/download/</li>
 	<li><b>2º)</b> Download and execute the installation to your Operational System</li>
-	<li><b>3º)</b> Did that, now open your command line terminal and go to the project folder “CoNews”, if you are using a Windows distribution use the Windows Power Shell as command line terminal.</li>
-	<li><b>4º)</b> With the command line terminal opened, now types this command line: "npm install" and wait the dependencies to be installed</li>
-	<li><b>5º)</b> After that types "npm start" to run the API.</li>
-	<li><b>6º)</b> Open in your browser the index.html file that is in the "/client/user" and "client/admin" folders to use the application.</li>
+  <li><b>3º)</b> Now yoy must add a MongoDB Connection String in the app.js file, in the line 32 of the file, to connect to a DB that you have access.</li>
+	<li><b>4º)</b> Did that, now open your command line terminal and go to the project folder “CoNews”, if you are using a Windows distribution use the Windows Power Shell as command line terminal.</li>
+	<li><b>5º)</b> With the command line terminal opened, now types this command line: "npm install" and wait the dependencies to be installed</li>
+	<li><b>6º)</b> After that types "npm start" to run the API.</li>
+	<li><b>7º)</b> Open in your browser the index.html file that is in the "/client/user" and "client/admin" folders to use the application.</li>
 </ul>
 
 
