@@ -1,38 +1,63 @@
-# CoNews-POO
+# CoNews
 
-## Uso do git
-<h4>Antes de tudo, instale o git </h4>
-  --> sudo apt-get update <br>
-  --> sudo apt-get install git <br>
-  Para certificar que foi instalado rode um git --version <br>
+<h3>📺 Apresentation </h3>
+<h4>To see a better execution of the application follow this link: <a href="https://youtu.be/LZd6BWTIXDI">CoNews - Functionalities</a> </h4>
 
-<h4>Com o git instalado configure seus dados com os dados do GitHub </h4><br>
+<h3>🔧 Functionalities </h3>
+<ul>
+  <li>
+    <h4>🔐 Admin </h4>
+    <div align="center">
+      <h5>Add a news:</h5>
+      <img src="./client/images/admin_demo1.gif"/>
+    </div>
+    <div align="center">
+      <h5>View all news:</h5>
+      <img src="./client/images/admin_demo2.gif"/>
+    </div>
+    <div align="center">
+      <h5>Remove news:</h5>
+      <img src="./client/images/admin_demo3.gif"/>
+    </div>
+  </li>
+  <li>
+    <h4>👥 User </h4>
+    <div align="center">
+      <img src="./client/images/user_demo1.gif"/>
+    </div>
+  </li>
+</ul>
 
-  --> git config --global user.name "seuUserNameDoGitHub" <br>
-  --> git config --global user.email seuEmailDoGitHub <br><br>
+<h3>🚀  Technologies</h3>
+<ul style="list-style-type:none;">
+  <li>
+        ✔️ <a  href="https://nodejs.org/en/" target="blank">Node.js</a>
+    </li>
+    <li>
+        ✔️ <a  href="https://expressjs.com/pt-br/" target="blank">Express</a>
+    </li>
+    <li>
+        ✔️ <a  href="https://www.mongodb.com/" target="blank">MongoDB</a>
+    </li>
+    <li>
+        ✔️ <a  href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="blank">HTML 5</a>
+    </li>
+    <li>
+        ✔️ <a  href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="blank">CSS 3</a>
+    </li>
+    <li>
+        ✔️ <a  href="https://developer.mozilla.org/pt-BR/docs/Aprender/JavaScript" target="blank">JavaScript(ES6)</a>
+    </li>
+</ul>
+<h3>🔥 Install and initialization</h3>
+<ul>
+<p>To compile and execute the code you msut have Node.js  with npm installed in your computer</p>
+	<li><b>1º)</b> Link to install Node.js : https://nodejs.org/en/download/</li>
+	<li><b>2º)</b> Download and execute the installation to your Operational System</li>
+	<li><b>3º)</b> Did that, now open your command line terminal and go to the project folder “CoNews”, if you are using a Windows distribution use the Windows Power Shell as command line terminal.</li>
+	<li><b>4º)</b> With the command line terminal opened, now types this command line: "npm install" and wait the dependencies to be installed</li>
+	<li><b>5º)</b> After that types "npm start" to run the API.</li>
+	<li><b>6º)</b> Open in your browser the index.html file that is in the "/client/user" and "client/admin" folders to use the application.</li>
+</ul>
 
-<h4> Clone o repositório </h4><br>
-  --> git clone https://github.com/leoaltemari/CoNews-POO.git <br><br>
-  
-<h3> Depois de ter clonado esse repositório com o comando git clone faça  o seguinte: </h3><br>
-<h4> Entre no repositorio clonado </h4><br>
-  --> cd CoNews/<br><br>
-  
-<h4> Atualize o repositório </h4><br>
-  --> git pull<br><br>
-  
-<h3>Feito isso, seu repositório tera todas as mudanças que foram feitas por outra pessoa</h3><br>
-<h4>Agora, sempre que vc fizer alterações no seu código e quiser enviar elas para o repositório remoto,<br>
-utilize a seguinte sequência de comandos: </h4><br>
-  --> git add . <br>
-  --> git commit -m "escreva uma mensagem aqui entre as aspas explicando o que vc esta enviando para o repositório" <br>
-  --> git push <br><br>
 
-<h4>Depois de ter dado push ele vai pedir seu usuário e sua senha, que nada mais é que o user e senha do GitHub. </h4><br><br>
-
-<h4>Pronto suas alterações foram enviadas para o repositório e todos tem acesso à elas através do comando git pull. </h4><br><br>
-
-<h2>OBS.: Sobre enviar alterações para o repositório, envie somente coisa que sejam funcionais, ou seja, se vc não terminou a <br>
-implementação de determinada funcionalidade, não envie o código para o repositório remoto, pq vc n tem nem certeza de que o código <br>
-está rodando e isso pode prejudicar as demais pessoas que estão trabalhando no seu projeto. </h2><br>
-FIM<br>

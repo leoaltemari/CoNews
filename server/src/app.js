@@ -27,6 +27,8 @@ app.use('/news', newsRoute);
 app.use('/help', helpRoute);
 
 // Conect to the DB
+// Needs put a connection string to a MongoDB cluster. There is the Atlas clound
+//MongoDB to meke the development and the tests easier
 const uri = "mongodb+srv://conews123:conews123@conews.j5o03.mongodb.net/CoNews?retryWrites=true&w=majority";
 mongoose.connect(uri, {
     useNewUrlParser: true,
