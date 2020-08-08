@@ -40,6 +40,9 @@
         ✔️ <a  href="https://www.mongodb.com/" target="blank">MongoDB</a>
     </li>
     <li>
+        ✔️ <a  href="https://vuejs.org/" target="blank">Vue.js</a>
+    </li>
+    <li>
         ✔️ <a  href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="blank">HTML 5</a>
     </li>
     <li>
